@@ -48,7 +48,7 @@ namespace ControleNota.Controllers
         // GET: Materias/Create
         public IActionResult Create()
         {
-            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "ProfessorId");
+            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "Nome");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace ControleNota.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "ProfessorId", materia.ProfessorId);
+            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "Nome", materia.Professor);
             return View(materia);
         }
 
@@ -82,7 +82,7 @@ namespace ControleNota.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "ProfessorId", materia.ProfessorId);
+            ViewData["ProfessorId"] = new SelectList(_context.Professores, "ProfessorId", "Nome", materia.ProfessorId);
             return View(materia);
         }
 

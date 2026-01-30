@@ -24,10 +24,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="Views\Alunos\Create.cshtml" />
+		<Content Include="Views\Alunos\Create.cshtml" />
 		<None Include="Views\Alunos\Delete.cshtml" />
 		<None Include="Views\Alunos\Details.cshtml" />
-		<None Include="Views\Alunos\Edit.cshtml" />
+		<Content Include="Views\Alunos\Edit.cshtml" />
 		<Content Include="Views\Alunos\Index.cshtml" />
 	</ItemGroup>
 

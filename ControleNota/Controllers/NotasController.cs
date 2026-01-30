@@ -51,8 +51,8 @@ namespace ControleNota.Controllers
         // GET: Notas/Create
         public IActionResult Create()
         {
-            ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "AlunoId");
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "MateriaId");
+            ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "Nome");
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "Nome");
             return View();
         }
 
@@ -87,8 +87,8 @@ namespace ControleNota.Controllers
             {
                 return NotFound();
             }
-            ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "AlunoId", nota.AlunoId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "MateriaId", nota.MateriaId);
+            ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "Nome", nota.AlunoId);
+            ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "Nome", nota.MateriaId);
             return View(nota);
         }
 
