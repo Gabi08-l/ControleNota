@@ -4,7 +4,7 @@
     public class Nota
     {
         public int NotaId { get; set; }
-        public double Valor { get; set; }
+        public decimal? Valor { get; set; }
         public DateTime DataLancamento { get; set; }
 
         public int AlunoId { get; set; }

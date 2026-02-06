@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleNota.Data;
 using ControleNota.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleNota.Controllers
 {
+    [Authorize]
     public class ProfessoresController : Controller
     {
         private readonly ApplicationDbContext _context;

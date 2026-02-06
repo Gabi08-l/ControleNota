@@ -4,10 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>Nota</h4>
-<hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -19,29 +18,29 @@
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataLancamento" class="control-label"></label>
+                <label asp-for="DataLancamento" class="control-label">Data de Lançamento</label>
                 <input asp-for="DataLancamento" class="form-control" />
                 <span asp-validation-for="DataLancamento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AlunoId" class="control-label"></label>
+                <label asp-for="AlunoId" class="control-label">Aluno</label>
                 <select asp-for="AlunoId" class="form-control" asp-items="ViewBag.AlunoId"></select>
                 <span asp-validation-for="AlunoId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MateriaId" class="control-label"></label>
+                <label asp-for="MateriaId" class="control-label">Matéria</label>
                 <select asp-for="MateriaId" class="form-control" asp-items="ViewBag.MateriaId"></select>
                 <span asp-validation-for="MateriaId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-danger mb-1" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-danger ">Voltar para a Lista</a>
 </div>
 
 @section Scripts {

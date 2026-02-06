@@ -7,11 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleNota.Data;
 using ControleNota.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleNota.Controllers
 {
+    [Authorize]
     public class AlunosController : Controller
     {
+
         private readonly ApplicationDbContext _context;
 
         public AlunosController(ApplicationDbContext context)

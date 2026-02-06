@@ -22,10 +22,16 @@ namespace ControleNota.Controllers
         }
 
         // GET: Notas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search)
         {
-            var applicationDbContext = _context.Notas.Include(n => n.Aluno).Include(n => n.Materia);
-            return View(await applicationDbContext.ToListAsync());
+            var notas = _context.Notas.Include(n => n.Aluno).Include(n => n.Materia).AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                notas = notas.Where(n => n.Aluno.Nome.Contains(search));
+            }
+            return View(await notas.ToListAsync());
+
         }
 
         // GET: Notas/Details/5
@@ -50,7 +56,11 @@ namespace ControleNota.Controllers
 
         // GET: Notas/Create
         public IActionResult Create()
+
         {
+
+            ViewBag.Alunos =
+
             ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "Nome");
             ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "Nome");
             return View();
@@ -61,18 +71,30 @@ namespace ControleNota.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NotaId,Valor,DataLancamento,AlunoId,MateriaId")] Nota nota)
+
+        public IActionResult Create(string AlunoNome, Nota nota)
+
         {
-            if (ModelState.IsValid)
+
+
+            var aluno = _context.Alunos
+     .FirstOrDefault(a => a.Nome.ToLower().Contains(AlunoNome.ToLower().Trim()));
+
+
+            if (aluno == null)
             {
-                _context.Add(nota);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "Aluno não encontrado.");
+                return View(nota);
             }
-            ViewData["AlunoId"] = new SelectList(_context.Alunos, "AlunoId", "AlunoId", nota.AlunoId);
-            ViewData["MateriaId"] = new SelectList(_context.Materias, "MateriaId", "MateriaId", nota.MateriaId);
-            return View(nota);
+
+            nota.AlunoId = aluno.AlunoId;
+
+            _context.Add(nota);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Notas/Edit/5
         public async Task<IActionResult> Edit(int? id)

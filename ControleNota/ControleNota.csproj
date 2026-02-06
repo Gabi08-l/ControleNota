@@ -25,8 +25,8 @@
 
 	<ItemGroup>
 		<Content Include="Views\Alunos\Create.cshtml" />
-		<None Include="Views\Alunos\Delete.cshtml" />
-		<None Include="Views\Alunos\Details.cshtml" />
+		<Content Include="Views\Alunos\Delete.cshtml" />
+		<Content Include="Views\Alunos\Details.cshtml" />
 		<Content Include="Views\Alunos\Edit.cshtml" />
 		<Content Include="Views\Alunos\Index.cshtml" />
 	</ItemGroup>
